@@ -1,0 +1,19 @@
+#Neccessary information for applying Modules
+
+#Region for deployment
+region: europe-west4
+
+environment: dev
+#Product name
+product_name: beam
+infra_name: dev
+#Environment the modules should be deployed
+environment_name : dev
+#google account Id
+project_id : gcp-integration-405114
+#Client Name
+client_name: beam
+environment_name: dev
+contact: "ayush.thakur@xenonstack.com"
+google_credentials: "../../Downloads/gcp-integration-405114-b2a3b520a3f4.json"
+state_bucket_name: beam-terraform-states-dev

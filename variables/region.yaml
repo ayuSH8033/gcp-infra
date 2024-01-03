@@ -1,0 +1,5 @@
+#Region for deployment
+region: europe-west4
+
+#Client Name
+client_name: beam

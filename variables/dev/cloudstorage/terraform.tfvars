@@ -1,0 +1,9 @@
+  zone        = "europe-west4-c"
+  name          = "image-store.com"
+  origin          = ["http://image-store.com"]
+  method          = ["GET", "HEAD", "PUT", "POST", "DELETE"]
+  max_age_seconds = 3600
+  logging-bucket = "log-bucket"
+  project     = "infra-testing-2023"
+  region                =  "europe-west1"
+  google_credentials = "../../../Documents/self-gcp-key.json"

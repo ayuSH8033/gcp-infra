@@ -1,0 +1,24 @@
+
+    vpc_name = "devops-counsel-vpc"
+    subnet-1name  = "devops-counsel-subnet-1"
+    ip_cidr_range1 = "172.16.1.0/24"
+    range_name1    = "k8s-pods"
+    ip_cidr_range2 = "172.22.0.0/16"
+    range_name2    = "k8s-services"
+    ip_cidr_range3 = "172.16.2.0/24"
+    subnet-2name   = "devops-counsel-subnet-2"
+    ip_cidr_range4 = "172.16.3.0/24"
+  firewall_name1    = "allow-ssh"
+    protocol1 = "tcp"
+    ports1    = ["22"]
+  source_ranges1 = ["0.0.0.0/0"]
+  firewall_name2    = "allow-internal"
+    protocol2 = "tcp"
+    ports2   = ["1-65535"]
+  protocol3 = "udp"
+    ports3    = ["1-65535"]
+  protocol4 = "icmp"
+  source_ranges2 = ["172.16.0.0/24", "172.16.1.0/24", "172.16.2.0/24" ]
+  project     = "infra-testing-2023"
+  region                =  "europe-west1"
+  google_credentials = "../../../Documents/self-gcp-key.json"
