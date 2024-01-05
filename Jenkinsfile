@@ -24,7 +24,10 @@ pipeline {
                 // sh 'terraform workspace select ${environment}'
                 // sh "terraform plan -input=false -out tfplan -var 'version=${params.version}' --var-file=environments/${params.environment}.tfvars"
                 // sh 'terraform show -no-color tfplan > tfplan.txt'
-                sh ''' /opt/homebrew/bin/terraform --help
+                sh '''
+                 ls
+                 /opt/homebrew/bin/tofu --help
+                 /opt/homebrew/bin/terraform --help
                 cd modules/${module}
              
                 /opt/homebrew/bin/terraform ${action} --auto-approve
