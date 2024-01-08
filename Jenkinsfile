@@ -27,10 +27,9 @@ pipeline {
                 sh '''
                  ls
                  /opt/homebrew/bin/tofu --help
-                 /opt/homebrew/bin/terraform --help
-                cd modules/${module}
-             
-                /opt/homebrew/bin/terraform ${action} --auto-approve
+                 cd modules/${module}
+                 /opt/homebrew/bin/tofu init
+                 /opt/homebrew/bin/tofu plan -var-file=../../variables/dev/${modules}/terraform.tfvars
                 '''
                         // cd terragrunt/${module}
                 // ls
