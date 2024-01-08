@@ -29,7 +29,7 @@ pipeline {
                  /opt/homebrew/bin/tofu --help
                  cd modules/${module}
                  /opt/homebrew/bin/tofu init
-                 /opt/homebrew/bin/tofu plan -var-file=../../variables/dev/${modules}/terraform.tfvars
+                 /opt/homebrew/bin/tofu plan -var-file=../../variables/dev/${module}/terraform.tfvars
                 '''
                         // cd terragrunt/${module}
                 // ls
