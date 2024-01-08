@@ -27,9 +27,7 @@ variable "source_ranges" {
   type = list
 }
 
-variable "google_credentials" {
-  type = string
-}
+
 
 
 variable "name" {
