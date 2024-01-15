@@ -25,6 +25,7 @@ pipeline {
 
         //Deploy to GCP
         sh '''
+            gcloud version
             #!/bin/bash 
             curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-225.0.0-linux-x86_64.tar.gz
             tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp
