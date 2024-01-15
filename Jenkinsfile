@@ -25,8 +25,9 @@ pipeline {
 
         //Deploy to GCP
         sh '''
-            curl -O ./google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-459.0.0-darwin-x86_64.tar.gz
-            tar -xvf ./google-cloud-sdk.tar.gz
+            curl -O  https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-459.0.0-darwin-x86_64.tar.gz
+            tar -xzvf ./google-cloud-cli-459.0.0-darwin-x86_64.tar.gz 
+            ls
             ./google-cloud-sdk/install.sh
             ./google-cloud-sdk/bin/gcloud init
             gcloud version
