@@ -30,17 +30,11 @@ pipeline {
             ls
             ./google-cloud-sdk/install.sh
             ./google-cloud-sdk/bin/gcloud init
-            gcloud version
-            // #!/bin/bash 
-            // curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-225.0.0-linux-x86_64.tar.gz
-            // tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp
-            // /tmp/google-cloud-sdk/install.sh -q
-            // source /tmp/google-cloud-sdk/path.bash.in
-             gcloud version
-             gcloud config set project infra-testing-2023;
-             gcloud auth activate-service-account --key-file ${GCLOUD_CREDS}
-             gcloud compute zones list
-             gcloud config list
+            ./google-cloud-sdk/bin/gcloud version
+             ./google-cloud-sdk/bin/gcloud config set project infra-testing-2023;
+             ./google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${GCLOUD_CREDS}
+             ./google-cloud-sdk/bin/gcloud compute zones list
+            ./google-cloud-sdk/bin/gcloud config list
         '''
         }   
 
