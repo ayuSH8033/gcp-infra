@@ -50,7 +50,7 @@ pipeline {
                 expression { params.action == 'apply' }
             }
             steps {
-                sh '/opt/homebrew/bin/tofu apply -var-file=../../variables/dev/${module}/terraform.tfvars'
+                sh '/opt/homebrew/bin/tofu apply --auto-approve'
             }
         }
 }
