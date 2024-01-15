@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
     CLOUDSDK_CORE_PROJECT='infra-testing-2023'
-    CLIENT_EMAIL='ayush.chotu51@gmail.com'
+    CLIENT_EMAIL='infra-manager-testing-sa@infra-testing-2023.iam.gserviceaccount.com'
     GCLOUD_CREDS=credentials('gcp-creds')
   }
 
