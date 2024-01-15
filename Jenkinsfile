@@ -51,6 +51,7 @@ pipeline {
             }
             steps {
                 sh '''
+                ./google-cloud-sdk/bin/gcloud compute instances create example-instance --image-family=rhel-8 --image-project=rhel-cloud --zone=us-central1-a
                 ./google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${GCLOUD_CREDS}
                 ls
                  cd modules/${module}
