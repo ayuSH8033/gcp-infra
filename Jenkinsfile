@@ -50,9 +50,6 @@ pipeline {
                 // sh 'terraform show -no-color tfplan > tfplan.txt'
                 sh '''
                  ls
-                //  gcloud version
-                //  gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
-                //  gcloud compute zones list
                  /opt/homebrew/bin/tofu --help
                  cd modules/${module}
                  /opt/homebrew/bin/tofu init
