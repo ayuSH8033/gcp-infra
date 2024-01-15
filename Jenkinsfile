@@ -4,6 +4,7 @@ pipeline {
     CLOUDSDK_CORE_PROJECT='infra-testing-2023'
     CLIENT_EMAIL='ayush.chotu51@gmail.com'
     GCLOUD_CREDS=credentials('gcp-creds')
+    GCLOUD
   }
 
     // parameters {
@@ -20,6 +21,25 @@ pipeline {
     // }
 
     stages {
+        stage('GCP-Checkout'){
+    steps{
+
+        //Deploy to GCP
+        sh '''
+            #!/bin/bash 
+            curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-225.0.0-linux-x86_64.tar.gz
+            tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp
+            /tmp/google-cloud-sdk/install.sh -q
+            source /tmp/google-cloud-sdk/path.bash.in
+             gcloud version
+             gcloud config set project infra-testing-2023;
+             gcloud auth activate-service-account --key-file ${GCLOUD_CREDS}
+             gcloud compute zones list
+             gcloud config list
+        '''
+        }   
+
+}
         stage('Plan') {
             steps {
                 // script {
@@ -31,9 +51,9 @@ pipeline {
                 // sh 'terraform show -no-color tfplan > tfplan.txt'
                 sh '''
                  ls
-                 gcloud version
-                 gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
-                 gcloud compute zones list
+                //  gcloud version
+                //  gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
+                //  gcloud compute zones list
                  /opt/homebrew/bin/tofu --help
                  cd modules/${module}
                  /opt/homebrew/bin/tofu init
