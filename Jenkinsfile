@@ -4,7 +4,6 @@ pipeline {
     CLOUDSDK_CORE_PROJECT='infra-testing-2023'
     CLIENT_EMAIL='ayush.chotu51@gmail.com'
     GCLOUD_CREDS=credentials('gcp-creds')
-    GCLOUD
   }
 
     // parameters {
