@@ -1,11 +1,16 @@
 pipeline {
     agent any
+    environment {
+    CLOUDSDK_CORE_PROJECT='infra-testing-2023'
+    CLIENT_EMAIL='ayush.chotu51@gmail.com'
+    GCLOUD_CREDS=credentials('gcp-creds')
+  }
 
-    parameters {
-        string(name: 'environment', defaultValue: 'default', description: 'Workspace/environment file to use for deployment')
-        string(name: 'version', defaultValue: '', description: 'Version variable to pass to Terraform')
-        booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
-    }
+    // parameters {
+    //     string(name: 'environment', defaultValue: 'default', description: 'Workspace/environment file to use for deployment')
+    //     string(name: 'version', defaultValue: '', description: 'Version variable to pass to Terraform')
+    //     booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
+    // }
     
     // environment {
     //     // AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
@@ -17,15 +22,18 @@ pipeline {
     stages {
         stage('Plan') {
             steps {
-                script {
-                    currentBuild.displayName = params.version
-                }
+                // script {
+                //     currentBuild.displayName = params.version
+                // }
                 // sh 'terraform init -input=false'
                 // sh 'terraform workspace select ${environment}'
                 // sh "terraform plan -input=false -out tfplan -var 'version=${params.version}' --var-file=environments/${params.environment}.tfvars"
                 // sh 'terraform show -no-color tfplan > tfplan.txt'
                 sh '''
                  ls
+                 gcloud version
+                 gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
+                 gcloud compute zones list
                  /opt/homebrew/bin/tofu --help
                  cd modules/${module}
                  /opt/homebrew/bin/tofu init
