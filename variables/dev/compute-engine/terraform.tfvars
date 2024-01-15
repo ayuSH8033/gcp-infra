@@ -16,4 +16,3 @@
   serial_port_condition = false
   project     = "infra-testing-2023"
   region                =  "europe-west1"
-  google_credentials = "../../../Documents/self-gcp-key.json"

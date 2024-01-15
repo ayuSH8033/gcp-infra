@@ -5,9 +5,7 @@ variable "project" {
 variable "region" {
   type = string
 }
-variable "google_credentials" {
-  type = string
-}
+
 
 variable "api_config_id" {
   type = string
