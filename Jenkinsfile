@@ -8,7 +8,7 @@ pipeline {
 
     parameters {
         choice(
-            choices: ['plan', 'apply'],
+            choices: ['plan', 'apply' , 'destroy'],
             description: 'Terraform action to be performed',
             name: 'action')
     }
@@ -57,6 +57,22 @@ pipeline {
                  /opt/homebrew/bin/tofu init
                  /opt/homebrew/bin/tofu plan -var-file=../../variables/dev/${module}/terraform.tfvars
                  /opt/homebrew/bin/tofu apply -var-file=../../variables/dev/${module}/terraform.tfvars --auto-approve
+                 '''
+            }
+        }
+
+        stage('destroy') {
+            when {
+                expression { params.action == 'destroy' }
+            }
+            steps {
+                sh '''
+                 ./google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${GCLOUD_CREDS}
+                ls
+                 cd modules/${module}
+                 /opt/homebrew/bin/tofu init
+                 /opt/homebrew/bin/tofu plan -var-file=../../variables/dev/${module}/terraform.tfvars
+                 /opt/homebrew/bin/tofu destroy -var-file=../../variables/dev/${module}/terraform.tfvars --auto-approve
                  '''
             }
         }
