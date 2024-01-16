@@ -16,4 +16,4 @@
   serial_port_condition = false
   project     = "infra-testing-2023"
   region                =  "europe-west1"
-  google_credentials = "/Users/xs254-ayutha/Documents/self-gcp-key.json"
+  google_credentials = "$GCLOUD_CREDS"
